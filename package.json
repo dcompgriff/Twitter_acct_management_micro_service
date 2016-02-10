@@ -4,13 +4,12 @@
   "description": "Service for accessing twitter's api for a single account",
   "main": "twitter_account_service_server.js",
   "dependencies": {
-    "express": "^4.13.4",
-    "forever": "^0.15.1"
+    "express": "^4.13.4"
   },
   "devDependencies": {},
   "scripts": {
     "test": "node ./server/twitter_account_service_server.js",
-    "start": "forever start ./server/twitter_account_service_server.js"
+    "start": "node ./server/twitter_account_service_server.js"
   },
   "repository": {
     "type": "git",
