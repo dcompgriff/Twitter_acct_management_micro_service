@@ -4,9 +4,11 @@ Developer: Dan Griffin
 
 Running The Service:
 Command to start:
-"docker run -it --rm -p 80:80 twitter_micro_service"
+"docker run -it --rm -p 80:80 -name mnode twitter_micro_service"
 Command to stop:
-"docker stop "
+"Ctrl-c"
+or
+"docker stop mnode"
 
 Building The Docker Image:
 Command to build:
