@@ -10,13 +10,7 @@ var app = express();
 
 app.get('/twitterpage/:id', function(req, res){
 	//Call twitter read API.
-	var jsonTweets = twitter.getUserTimelineStatuses(req.params.id);
-	//Convert into json obj.
-	//var jsonTweets = JSON.parse(tweets);
-	jsonTweets.name = req.params.id;
-
-	//Convert all data back to string, and return.
-	res.send(JSON.stringify(jsonTweets));
+	var jsonTweets = twitter.getUserTimelineStatuses(req.params.id, req, res);
 });
 
 app.listen(8080, function(){

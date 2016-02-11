@@ -4,34 +4,43 @@ var fs = require('fs');
 var keyFileName = 'keyfile.txt';
 
 
-//Create twitter client.
-var client = new Twitter({
-	consumer_key: '',
-	consumer_secret: '',
-	access_token_key: '',
-	access_token_secret: ''
-
-});
-
 //Create crypto module for the encryption functions.
 var crypto = require('crypto'), algorithm = 'aes-256-ctr', password='^cHUVRS7e49BE^mqn!et';
 
 module.exports = {
 	
-	getUserTimelineStatuses: function(userId){
+	getUserTimelineStatuses: function(userId, req, res){
 		//Get the encryption key to decrypt the app secret.
 		var keyJson = decrypt();
 		console.log('decrypted: ' + JSON.stringify(keyJson));
 
+		//Create a new twitter client.
+		var client = new Twitter({
+			consumer_key: keyJson.consumerKey,
+			consumer_secret: keyJson.consumerSecret,
+			access_token_key: keyJson.accessToken,
+			access_token_secret: keyJson.accessTokenSecret
+		});
 
-		// client.get('statuses/user_timeline', params, function(error){
-		// 	if(!error){
-		// 		console.log(tweets);
-		// 		return tweets;
-		// 	}
-		// });
+		//Get the user timeline statuses for the current user.
+		client.get('statuses/user_timeline', function(error, tweets, response){
+			if(!error){
+				console.log(tweets);
 
-		return {tweets: 'Tweets'};
+				//Create clean response object to return.
+				var tweetResponseList = {'tweetList': [],
+											'userId': req.params.id};
+				for (i=0; i<tweets.length; i++){
+					tweetResponseList.tweetList.push({'text': tweets[i].text, 'date': tweets[i].created_at});
+				};
+
+				//Convert all data back to string, and return.
+				res.send(JSON.stringify(tweetResponseList));
+			}else{
+				res.statusCode = 500;
+				res.send(error);
+			}
+		});
 	}
 
 };
