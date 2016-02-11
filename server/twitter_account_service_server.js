@@ -8,9 +8,9 @@ var app = express();
 
 
 
-app.get('/twitterpage/:id', function(req, res){
+app.get('/twitterpage/:id/:count', function(req, res){
 	//Call twitter read API.
-	var jsonTweets = twitter.getUserTimelineStatuses(req.params.id, req, res);
+	var jsonTweets = twitter.getUserTimelineStatuses(req.params.id, req.params.count, res);
 });
 
 app.listen(8080, function(){

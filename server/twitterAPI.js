@@ -9,7 +9,7 @@ var crypto = require('crypto'), algorithm = 'aes-256-ctr', password='^cHUVRS7e49
 
 module.exports = {
 	
-	getUserTimelineStatuses: function(userId, req, res){
+	getUserTimelineStatuses: function(userId, count, res){
 		//Get the encryption key to decrypt the app secret.
 		var keyJson = decrypt();
 		console.log('decrypted: ' + JSON.stringify(keyJson));
@@ -23,19 +23,20 @@ module.exports = {
 		});
 
 		//Get the user timeline statuses for the current user.
-		client.get('statuses/user_timeline', function(error, tweets, response){
+		client.get('statuses/user_timeline', {'screen_name': userId, 'count': count}, function(error, tweets, response){
 			if(!error){
 				console.log(tweets);
 
 				//Create clean response object to return.
 				var tweetResponseList = {'tweetList': [],
-											'userId': req.params.id};
+											'userId': userId,
+											'length': tweets.length};
 				for (i=0; i<tweets.length; i++){
 					tweetResponseList.tweetList.push({'text': tweets[i].text, 'date': tweets[i].created_at});
 				};
 
 				//Convert all data back to string, and return.
-				res.send(JSON.stringify(tweetResponseList));
+				res.send(JSON.stringify(tweetResponseList, null, '\t'));
 			}else{
 				res.statusCode = 500;
 				res.send(error);
