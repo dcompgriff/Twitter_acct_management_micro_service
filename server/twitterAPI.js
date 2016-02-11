@@ -1,7 +1,7 @@
 //Enclose all twitter API call functions in an exportable module.
 var Twitter = require('twitter')
 var fs = require('fs');
-var keyFileName = 'keyfile.txt';
+var keyFileName = './server/keyfile.txt';
 
 
 //Create crypto module for the encryption functions.
