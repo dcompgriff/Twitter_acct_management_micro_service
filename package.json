@@ -4,7 +4,8 @@
   "description": "Service for accessing twitter's api for a single account",
   "main": "twitter_account_service_server.js",
   "dependencies": {
-    "express": "^4.13.4"
+    "express": "^4.13.4",
+    "twitter": "^1.2.5"
   },
   "devDependencies": {},
   "scripts": {
