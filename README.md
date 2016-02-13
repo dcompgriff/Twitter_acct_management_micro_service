@@ -28,7 +28,7 @@ EXAMPLE COMMAND:
 
 **********************************************************************
 SERVICE PURPOSE:
-This service is used to access twitter tweets for twitter users, without having to manage the communication protocols or authorization. This abstraction provides a way to decouple application logic from the details of managing twitter access. This abstraction allows the application to evolve in complexity separately from the twitter service.
+This service can currently be used to retrieve tweets for a designated twitter ser. The API can return up to 200 of the most recent tweets for the specified user account. An example of calling the service can be seen above. This service is used to access twitter tweets for twitter users, without having to manage the communication protocols or authorization. This abstraction provides a way to decouple application logic from the details of managing twitter access. This abstraction allows the application to evolve in complexity separately from the twitter service.
 
 **********************************************************************
 PLANS FOR FUTURE WORK:
