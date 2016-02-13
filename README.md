@@ -4,40 +4,36 @@ Developer: Dan Griffin
 
 **********************************************************************
 Running The Service:
-Command to start:
-"docker run -it --rm -p 80:80 -name mnode twitter_micro_service"
-Command to stop:
+COMMAND TO START:
+"docker run -it --rm -p 80:80 --name mnode twitter_micro_service"
+COMMAND TO STOP:
 "Ctrl-c"
 or
 "docker stop mnode"
 
-Building The Docker Image:
-Command to build:
+BUILD THE DOCKER IMAGE:
+COMMAND TO BUILD:
 "docker build -t twitter_micro_service ."
 
-Entering The Node Docker Image:
-Command to enter the image:
+ENTERING THE NODE DOCKER IMAGE:
+COMMAND TO ENTER THE IMAGE:
 "docker exec -it <container id> /bin/bash"
 
-Testing The Service Endpoint:
-Command format:
+TESTING THE SERVICE ENDPOINT:
+COMMAND FORMAT:
 GET http://<service url>/twitterpage/<valid twitter screen_name>/<number of tweets to return>
 
-Example command:
-"http://127.0.0.1:8080/twitterpage/twitterapi/2"
+EXAMPLE COMMAND:
+"http://127.0.0.1/twitterpage/twitterapi/2"
 
 **********************************************************************
-Service Purpose:
-
-
-**********************************************************************
-Design Overview:
-
+SERVICE PURPOSE:
+This service is used to access twitter tweets for twitter users, without having to manage the communication protocols or authorization. This abstraction provides a way to decouple application logic from the details of managing twitter access. This abstraction allows the application to evolve in complexity separately from the twitter service.
 
 **********************************************************************
-Plans For Future Work:
-
+PLANS FOR FUTURE WORK:
+The plan is to eventually extend the service to manage posting tweets and other actions for users. This means setting up a database for managing access credentials for users that the service can access. 
 
 **********************************************************************
-Other nuansces to note:
+OTHER NUANSCES TO NOTE:
 The twitter response APIs are limited to 200 tweets per query.

@@ -7,13 +7,12 @@ var twitter = require('./twitterAPI')
 var app = express();
 
 
-
 app.get('/twitterpage/:id/:count', function(req, res){
 	//Call twitter read API.
 	var jsonTweets = twitter.getUserTimelineStatuses(req.params.id, req.params.count, res);
 });
 
-app.listen(8080, function(){
+app.listen(80, function(){
 	console.log('Twitter server started.');
 });
 
