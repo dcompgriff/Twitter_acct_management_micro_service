@@ -4,22 +4,27 @@ Developer: Dan Griffin
 
 **********************************************************************
 Running The Service:
+
 COMMAND TO START:
 "docker run -it --rm -p 80:80 --name mnode twitter_micro_service"
+
 COMMAND TO STOP:
 "Ctrl-c"
 or
 "docker stop mnode"
 
 BUILD THE DOCKER IMAGE:
+
 COMMAND TO BUILD:
 "docker build -t twitter_micro_service ."
 
 ENTERING THE NODE DOCKER IMAGE:
+
 COMMAND TO ENTER THE IMAGE:
 "docker exec -it <container id> /bin/bash"
 
 TESTING THE SERVICE ENDPOINT:
+
 COMMAND FORMAT:
 GET http://<service url>/twitterpage/<valid twitter screen_name>/<number of tweets to return>
 
